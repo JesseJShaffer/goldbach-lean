@@ -1,0 +1,93 @@
+{
+  "source_file_sha256": {
+    "research/wu2008/src/WR2ClassicalCertificate.lean": "ccd260b66cdd786b22d6b81e6fffe966bd57efc45c2370d95aed3f5b2d8c0804",
+    "research/wu2008/src/ActualLogGainFinal.lean": "7fc1093a28b0d7dd25564deeaf8820577cb7fe627884d52c54d5cb5c9f723dec",
+    "research/wu2008/src/ActualLogGainPayment.lean": "e40c62381960722cc532fa5266ad8179bb753116b2c28740aa88cabf2e713bc9",
+    "research/wu2008/src/ActualQTotalEnclosure.lean": "ec66ce117bfb275cfe1b8b1bf8d2f444bae4f8bf0a3fc3e70529d90c0901edc4"
+  },
+  "rational_budget_analysis": {
+    "wr2_classical_lower_frac": "17401/20000",
+    "wr2_classical_lower_float": 0.87005,
+    "wr2_deficit_to_unity_frac": "2599/20000",
+    "wr2_exponent_pinch_u": "4469/9469",
+    "unclosed_exponent_gap_to_sqrt": "531/18938",
+    "unclosed_exponent_gap_float": 0.028039,
+    "omc_bilateral_survival_float": 0.022930776601711975,
+    "fiveup_reciprocal_qr_survival_float": 3.0215477396674694e-08,
+    "semiprime_contraction_factor_1_in_X": 758908.3,
+    "contracted_semiprime_deficit_float": 1.7123280889687488e-07,
+    "net_closed_margin_positive": true
+  },
+  "precomputed_3d_space_comparison": [
+    {
+      "N": 1024,
+      "M": 512,
+      "rs2c3_pure_radical_S1_C1_count": 132,
+      "true_goldbach_r1_witnesses": 42,
+      "wr2_one8938_semiprime_r_gt_1_count": 61,
+      "wr2_ramified_squares_r_eq_q": 0,
+      "wr2_zero_discriminant_masquerades": 0,
+      "goldbach_r1_strictly_dominates_pinched_r_gt_1": true
+    },
+    {
+      "N": 2048,
+      "M": 1024,
+      "rs2c3_pure_radical_S1_C1_count": 222,
+      "true_goldbach_r1_witnesses": 50,
+      "wr2_one8938_semiprime_r_gt_1_count": 119,
+      "wr2_ramified_squares_r_eq_q": 0,
+      "wr2_zero_discriminant_masquerades": 0,
+      "goldbach_r1_strictly_dominates_pinched_r_gt_1": true
+    },
+    {
+      "N": 4096,
+      "M": 2048,
+      "rs2c3_pure_radical_S1_C1_count": 418,
+      "true_goldbach_r1_witnesses": 104,
+      "wr2_one8938_semiprime_r_gt_1_count": 194,
+      "wr2_ramified_squares_r_eq_q": 0,
+      "wr2_zero_discriminant_masquerades": 0,
+      "goldbach_r1_strictly_dominates_pinched_r_gt_1": true
+    },
+    {
+      "N": 10000,
+      "M": 5000,
+      "rs2c3_pure_radical_S1_C1_count": 970,
+      "true_goldbach_r1_witnesses": 254,
+      "wr2_one8938_semiprime_r_gt_1_count": 483,
+      "wr2_ramified_squares_r_eq_q": 0,
+      "wr2_zero_discriminant_masquerades": 0,
+      "goldbach_r1_strictly_dominates_pinched_r_gt_1": true
+    },
+    {
+      "N": 25000,
+      "M": 12500,
+      "rs2c3_pure_radical_S1_C1_count": 2198,
+      "true_goldbach_r1_witnesses": 528,
+      "wr2_one8938_semiprime_r_gt_1_count": 1017,
+      "wr2_ramified_squares_r_eq_q": 0,
+      "wr2_zero_discriminant_masquerades": 0,
+      "goldbach_r1_strictly_dominates_pinched_r_gt_1": true
+    },
+    {
+      "N": 50000,
+      "M": 25000,
+      "rs2c3_pure_radical_S1_C1_count": 4007,
+      "true_goldbach_r1_witnesses": 900,
+      "wr2_one8938_semiprime_r_gt_1_count": 1800,
+      "wr2_ramified_squares_r_eq_q": 0,
+      "wr2_zero_discriminant_masquerades": 0,
+      "goldbach_r1_strictly_dominates_pinched_r_gt_1": true
+    },
+    {
+      "N": 100000,
+      "M": 50000,
+      "rs2c3_pure_radical_S1_C1_count": 7578,
+      "true_goldbach_r1_witnesses": 1620,
+      "wr2_one8938_semiprime_r_gt_1_count": 3232,
+      "wr2_ramified_squares_r_eq_q": 0,
+      "wr2_zero_discriminant_masquerades": 0,
+      "goldbach_r1_strictly_dominates_pinched_r_gt_1": true
+    }
+  ]
+}

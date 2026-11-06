@@ -1,0 +1,13 @@
+{
+  "status": "PASS_ZERO_SORRY_STANDARD_AXIOMS_ONLY",
+  "module": "WR2ESZerosGoldbachBridge",
+  "toolchain": "leanprover/lean4:v4.33.0-rc1",
+  "leanchecker_exit_code": 0,
+  "leanchecker_seconds": 0.440041,
+  "leanchecker_stdout": "replaying WR2ESZerosGoldbachBridge",
+  "sha256_bindings": {
+    "research/wu2008/src/WR2ESZerosGoldbachBridge.lean": "75d64a7f1faa6b451dc5331f0e4d80e6e7d15a31a1366683e10fed8a118e22f2",
+    "research/wu2008/build/lib/WR2ESZerosGoldbachBridge.olean": "af3465187db1c062c11c16780f69fa556cc61a1ca893c19dffd5f636fd412ff7",
+    "research/es_zeros_bridge_lab/wr2_es_zeros_bridge_audit.json": "22452dc96f7122f7c34f08960e7e74462131fba12dcf4d77a170f6e721ef25ab"
+  }
+}

@@ -1,0 +1,14 @@
+2026-11-06 04:29:13,515 | INFO | === Stage 1 & 2: Precomputing WR2 (goldbach-lean) vs. ES_Zeros 3D Spaces ===
+2026-11-06 04:29:13,515 | INFO | [Source Check] research/wu2008/src/WR2ClassicalCertificate.lean -> SHA256: ccd260b66cdd786b22d6b81e6fffe966bd57efc45c2370d95aed3f5b2d8c0804
+2026-11-06 04:29:13,515 | INFO | [Source Check] research/wu2008/src/ActualLogGainFinal.lean -> SHA256: 7fc1093a28b0d7dd25564deeaf8820577cb7fe627884d52c54d5cb5c9f723dec
+2026-11-06 04:29:13,515 | INFO | [Source Check] research/wu2008/src/ActualLogGainPayment.lean -> SHA256: e40c62381960722cc532fa5266ad8179bb753116b2c28740aa88cabf2e713bc9
+2026-11-06 04:29:13,515 | INFO | [Source Check] research/wu2008/src/ActualQTotalEnclosure.lean -> SHA256: ec66ce117bfb275cfe1b8b1bf8d2f444bae4f8bf0a3fc3e70529d90c0901edc4
+2026-11-06 04:29:13,516 | INFO | [Rational Budget] WR2 classical_lower = 17401/20000 (deficit = 2599/20000) | Unclosed exponent band [4469/9469, 1/2] = 531/18938 (0.028039) | 5UP Reciprocal + Triple-QR Contraction = 1 in 758908.30
+2026-11-06 04:29:15,597 | INFO | [3D Space N=  1024 (M=  512)] R(S^2=1,C^3=1)=  132 | True Goldbach (r=1)=  42 | WR2 Pinched Semiprimes (r^5000<=q^4469)=  61 | Ramified r==q=0 | D==0 Masquerades=0
+2026-11-06 04:29:15,597 | INFO | [3D Space N=  2048 (M= 1024)] R(S^2=1,C^3=1)=  222 | True Goldbach (r=1)=  50 | WR2 Pinched Semiprimes (r^5000<=q^4469)= 119 | Ramified r==q=0 | D==0 Masquerades=0
+2026-11-06 04:29:15,597 | INFO | [3D Space N=  4096 (M= 2048)] R(S^2=1,C^3=1)=  418 | True Goldbach (r=1)= 104 | WR2 Pinched Semiprimes (r^5000<=q^4469)= 194 | Ramified r==q=0 | D==0 Masquerades=0
+2026-11-06 04:29:15,597 | INFO | [3D Space N= 10000 (M= 5000)] R(S^2=1,C^3=1)=  970 | True Goldbach (r=1)= 254 | WR2 Pinched Semiprimes (r^5000<=q^4469)= 483 | Ramified r==q=0 | D==0 Masquerades=0
+2026-11-06 04:29:15,598 | INFO | [3D Space N= 25000 (M=12500)] R(S^2=1,C^3=1)= 2198 | True Goldbach (r=1)= 528 | WR2 Pinched Semiprimes (r^5000<=q^4469)=1017 | Ramified r==q=0 | D==0 Masquerades=0
+2026-11-06 04:29:15,598 | INFO | [3D Space N= 50000 (M=25000)] R(S^2=1,C^3=1)= 4007 | True Goldbach (r=1)= 900 | WR2 Pinched Semiprimes (r^5000<=q^4469)=1800 | Ramified r==q=0 | D==0 Masquerades=0
+2026-11-06 04:29:15,598 | INFO | [3D Space N=100000 (M=50000)] R(S^2=1,C^3=1)= 7578 | True Goldbach (r=1)=1620 | WR2 Pinched Semiprimes (r^5000<=q^4469)=3232 | Ramified r==q=0 | D==0 Masquerades=0
+2026-11-06 04:29:15,598 | INFO | Saved full verification report to /home/nothideokuze/Github/OtherRepos/goldbach-lean/research/es_zeros_bridge_lab/wr2_es_zeros_bridge_audit.json
