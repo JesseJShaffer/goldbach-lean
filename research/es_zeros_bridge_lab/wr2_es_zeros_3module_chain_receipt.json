@@ -1,0 +1,16 @@
+{
+  "status": "PASS_3_MODULE_BRIDGE_CHAIN_ZERO_SORRY",
+  "modules_verified": [
+    "WR2ESZerosGoldbachBridge",
+    "WR2MathlibLiteralWeld",
+    "WR2ESZerosTimingChainClosure"
+  ],
+  "sha256_bindings": {
+    "research/es_zeros_bridge_lab/WR2ESZerosGoldbachBridge.lean": "de3361a82cfd155d805f8545d84f553f0fc1427e9944304264e95b85b2b982b1",
+    "research/es_zeros_bridge_lab/build/lib/WR2ESZerosGoldbachBridge.olean": "7239b9a9b763bc6903b6f41d1ab38fd9ac4a0c30ee33c1784df7ecf05d4a6762",
+    "research/es_zeros_bridge_lab/WR2MathlibLiteralWeld.lean": "40a53e7259e2b9ee0686d02a14b01f13eedf24384ea6cf5b9e6894fba962c453",
+    "research/es_zeros_bridge_lab/build/lib/WR2MathlibLiteralWeld.olean": "34821d40271f7b870a35f60e4fcaaf8e19e8a2cacf3ef4d9b276ca6e6636c16f",
+    "research/es_zeros_bridge_lab/WR2ESZerosTimingChainClosure.lean": "d124dd130cd8d4056a505f746fd2e9bb8c35d5acfab5d6a0b87809bdb2d3119a",
+    "research/es_zeros_bridge_lab/build/lib/WR2ESZerosTimingChainClosure.olean": "9a5fc67f3017b62f1bb41e2a8733fe59f9c6870414c06dd026b2d444f2033ec8"
+  }
+}
