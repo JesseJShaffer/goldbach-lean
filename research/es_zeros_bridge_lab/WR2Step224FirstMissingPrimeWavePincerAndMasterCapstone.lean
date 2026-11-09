@@ -33,8 +33,7 @@ on the `Goldbach.All` (`D19 N`) stack:
 3. **Section 3 — First-Missing-Prime (`q_E`) Square-Onset Wave Pincer & Master 47-Module Capstone
    (`master_47module_goldbach_lean_D19_and_WR2_pincer_capstone`):**
    - `first_missing_prime_kills_all_lower_target_sieved_fibers`,
-   - `first_missing_prime_square_frontier_collapses_subfilter`,
-   - `step212_selberg_parity_defeat_and_goldbach_lean_master_closure`, and
+   - `first_missing_prime_square_frontier_collapses_subfilter`, and
    - `master_47module_goldbach_lean_D19_and_WR2_pincer_capstone`.
 -/
 
@@ -183,6 +182,20 @@ theorem canonical_rs2c3_exponent_decomposition (p e : ℕ) :
       Nat.mul_comm 2 (expB e), nat_pow_mul_local p (expB e) 2,
       Nat.mul_comm 3 (expC e), nat_pow_mul_local p (expC e) 3]
 
+/-- Isolated linear helper: `q ≠ 0` and `q < 2` implies `q = 1`. -/
+theorem eq_one_of_ne_zero_of_lt_two_liliu {q : ℕ} (h_ne0 : q ≠ 0) (h_lt2 : q < 2) :
+    q = 1 := by
+  omega
+
+/-- Isolated linear helper: `d < c` and `d + r = c` implies `1 ≤ r`. -/
+theorem rem_pos_of_lt_of_add_eq_liliu {d r c : ℕ} (hd_lt : d < c) (h_sum : d + r = c) :
+    1 ≤ r := by
+  omega
+
+/-- Isolated linear helper: `1 ≤ r` and `r = 0` is impossible. -/
+theorem false_of_one_le_of_eq_zero_liliu {r : ℕ} (h1 : 1 ≤ r) (h0 : r = 0) : False := by
+  omega
+
 /-- **Theorem 1.4 (`quotient_one_triangle_zero_free_dead_zone`):**
     Pillar 4a (Reciprocal Quotient-One Dead Zone): for `d < c < 2 * d`,
     `c / d = 1 ∧ 1 ≤ c % d ∧ c % d < d ∧ d + c % d = c ∧ ¬ (d ∣ c)`. -/
@@ -208,19 +221,20 @@ theorem quotient_one_triangle_zero_free_dead_zone
       have h_mul : d * 2 ≤ d * (c / d) := Nat.mul_le_mul_left d hge
       have h_2d : 2 * d = d * 2 := Nat.mul_comm 2 d
       omega
-  have h_q_eq_one : c / d = 1 := by omega
+  have h_q_eq_one : c / d = 1 :=
+    eq_one_of_ne_zero_of_lt_two_liliu h_q_not_zero h_q_lt_two
   have h_sum : d + c % d = c := by
     have h_dm := h_div_mod
     rw [h_q_eq_one, Nat.mul_one] at h_dm
     exact h_dm
-  have h_rem_pos : 1 ≤ c % d := by omega
+  have h_rem_pos : 1 ≤ c % d := rem_pos_of_lt_of_add_eq_liliu hd_lt h_sum
   refine ⟨h_q_eq_one, h_rem_pos, h_mod_lt, h_sum, ?_⟩
   intro h_dvd
   obtain ⟨k, hk⟩ := h_dvd
   have h_eq : d * 1 + c % d = d * k := by
     rw [Nat.mul_one, h_sum, hk]
   have h_zero : c % d = 0 := eq_zero_of_mul_add_eq_mul_of_lt_liliu h_mod_lt h_eq
-  omega
+  exact false_of_one_le_of_eq_zero_liliu h_rem_pos h_zero
 
 /-!
 ## Section 2: Target-Divisor Shield (`r ∣ N`), Global Low-Target Deduplication & Disjoint 1D Fiber Sum on `D19 N`
@@ -547,25 +561,16 @@ theorem first_missing_prime_kills_all_lower_target_sieved_fibers
   have hr_le : r ≤ q_E := Nat.le_of_lt hr_lt
   exact (targetSieved_fiber_eq_empty_of_dvd_target_liliu (L := 0) hr hN_mod hr_le).1
 
-/-- General `(a, b)`-pinched prime representation set (`pinchedRepresentedPrimes a b N`). -/
-def pinchedRepresentedPrimes (a b N : ℕ) : Finset ℕ :=
-  (range (N + 1)).filter (fun p : ℕ =>
-    IsPrimeNat p ∧ ∃ r q : ℕ,
-      (r = 1 ∨ IsPrimeNat r) ∧ IsPrimeNat q ∧ N = p + r * q ∧ r ^ b ≤ q ^ a)
-
-/-- True Binary Goldbach prime set (`r = 1`, `N = p + q`). -/
-def trueGoldbachPrimes (N : ℕ) : Finset ℕ :=
-  (range (N + 1)).filter (fun p : ℕ =>
-    IsPrimeNat p ∧ ∃ q : ℕ, IsPrimeNat q ∧ N = p + q)
-
 /-- **Theorem 3.2 (`first_missing_prime_square_frontier_collapses_subfilter`):**
     First-Missing-Prime `q_E(q_E + 2)` Square-Onset Frontier Certificate:
+    Directly connected to `pinchedRepresentedPrimes a b N` and `trueGoldbachPrimes N`
+    from `WR2FinsetPartitionDischarge`:
     For any even target `N` (`N % 2 = 0`), `IsFirstMissingOddPrimeLiliu N q_E`, and any
     exponents `a + (d + 1) = b`:
-    1. Every odd prime `r < q_E` has `(liliuTargetSieved3PrimeFiber N r q_E).card = 0`, and
-    2. Every represented prime `p ∈ pinchedRepresentedPrimes a b N` in the frontier window
-       `q_E < p` and `N < p + q_E * (q_E + 2)` has zero semiprime factorizations (`r = 1`)
-       and belongs unconditionally to `trueGoldbachPrimes N` (`N = p + q`). -/
+    Every represented prime `p ∈ pinchedRepresentedPrimes a b N` in the frontier window
+    `q_E < p` and `N < p + q_E * (q_E + 2)` has zero semiprime factorizations (`r = 1`)
+    and belongs unconditionally to `trueGoldbachPrimes N` (`N = p + q`) paired with its
+    Factorial Lighthouse next prime `p < p_next'`. -/
 theorem first_missing_prime_square_frontier_collapses_subfilter
     {N q_E p a d b : ℕ}
     (hEven : N % 2 = 0)
@@ -576,26 +581,30 @@ theorem first_missing_prime_square_frontier_collapses_subfilter
     (h_window : N < p + q_E * (q_E + 2)) :
     p ∈ trueGoldbachPrimes N ∧
     ∃ q p_next' : ℕ,
-      IsPrimeNat p ∧ IsPrimeNat q ∧ N = p + q ∧ p < p_next' ∧ IsPrimeNat p_next' := by
-  rw [pinchedRepresentedPrimes, mem_filter] at hp_mem
-  obtain ⟨hp_range, hp_isp, r, q, hr_or, hq_isp, hN_eq, hpow⟩ := hp_mem
+      Nat.Prime p ∧ Nat.Prime q ∧ IsPrimeNat p ∧ IsPrimeNat q ∧
+      N = p + q ∧ p < p_next' ∧ IsPrimeNat p_next' := by
+  rw [pinchedRepresentedPrimes, mem_filter, IsPinchedRepresentation] at hp_mem
+  obtain ⟨hp_range, hp_prime, r, q, hr_or, hq_prime, hN_eq, hpow⟩ := hp_mem
+  have hp_isp : IsPrimeNat p := natPrime_to_isPrimeNat hp_prime
+  have hq_isp : IsPrimeNat q := natPrime_to_isPrimeNat hq_prime
   cases hr_or with
   | inl hr1 =>
     rw [hr1, Nat.one_mul] at hN_eq
     obtain ⟨p_next', hp_lt, hp_next_isp⟩ := hasNextPrimeConnection_unconditional p
-    refine ⟨?_, q, p_next', hp_isp, hq_isp, hN_eq, hp_lt, hp_next_isp⟩
+    refine ⟨?_, q, p_next', hp_prime, hq_prime, hp_isp, hq_isp, hN_eq, hp_lt, hp_next_isp⟩
     rw [trueGoldbachPrimes, mem_filter]
-    exact ⟨hp_range, hp_isp, q, hq_isp, hN_eq⟩
+    exact ⟨hp_range, hp_prime, q, hq_prime, hN_eq⟩
   | inr hr_prime =>
+    have hr_isp : IsPrimeNat r := natPrime_to_isPrimeNat hr_prime
     have hq_two : 2 ≤ q := hq_isp.1
-    have hr_two : 2 ≤ r := hr_prime.1
-    have h_cut := universal_pinch_strict_lt_and_cutline N p r q a d b hr_prime hN_eq h_exp hpow
+    have hr_two : 2 ≤ r := hr_isp.1
+    have h_cut := universal_pinch_strict_lt_and_cutline N p r q a d b hr_isp hN_eq h_exp hpow
     have h_r_lt_q : r < q := h_cut.1
     have hqE_ge2 : 2 ≤ q_E := hqE.1.1
     have hqE_odd : q_E % 2 = 1 := hqE.2.1
     have hp_ge4 : 4 ≤ p := by omega
     have hp_odd : p % 2 = 1 := by
-      rcases isPrimeNat_eq_two_or_odd_liliu hp_isp with rfl | hp_o
+      rcases isPrimeNat_eq_two_or_odd_liliu hp_isp with hp_eq2 | hp_o
       · omega
       · exact hp_o
     have h_rq_odd : (r * q) % 2 = 1 := by omega
@@ -603,8 +612,8 @@ theorem first_missing_prime_square_frontier_collapses_subfilter
     have h_r2_le_q : r + 2 ≤ q := by omega
     match Nat.lt_or_ge r q_E with
     | Or.inl hr_lt_qE =>
-      have hN_mod_r : N % r = 0 := hqE.2.2.2 r hr_prime hr_odd hr_lt_qE
-      have h_p_eq_r := (target_divisor_forces_p_eq_r_liliu hp_isp hr_prime hN_eq hN_mod_r).1
+      have hN_mod_r : N % r = 0 := hqE.2.2.2 r hr_isp hr_odd hr_lt_qE
+      have h_p_eq_r := (target_divisor_forces_p_eq_r_liliu hp_isp hr_isp hN_eq hN_mod_r).1
       omega
     | Or.inr hr_ge_qE =>
       have hq_ge_qE2 : q_E + 2 ≤ q := Nat.le_trans (Nat.add_le_add_right hr_ge_qE 2) h_r2_le_q

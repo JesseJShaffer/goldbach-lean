@@ -265,8 +265,8 @@ theorem wr2GlobalTargetSievedSubfilter_subset_image_biUnion
   rw [wr2GlobalTargetSievedSubfilter, mem_filter] at hp
   obtain ⟨hp_odd_sub, hm_lt_p⟩ := hp
   have hp_in_img :
-      p ∈ (wr2TightChiralHalfChordBox N).image (reconstructPrimeFromHalfChordWR2 N) :=
-    wr2OddCutlineSemiprimePrimes_subset_image_tight_box hEven hp_odd_sub
+      p ∈ (wr2TightChiralHalfChordBox N).image (reconstructPrimeWR2 N) :=
+    wr2OddCutlineSemiprimePrimes_subset_image_tightBox hEven hp_odd_sub
   rw [mem_image] at hp_in_img
   obtain ⟨pair, hpair_tight, h_p_eq⟩ := hp_in_img
   have h_part := wr2TightChiralHalfChordBox_eq_lowPrime_union_waveSieved p_next N
@@ -286,19 +286,20 @@ theorem wr2GlobalTargetSievedSubfilter_subset_image_biUnion
     rw [wr2ShearContractedFiberPairs, mem_image] at hrq_shear
     obtain ⟨q, hq_shear, h_rq_eq⟩ := hrq_shear
     subst h_rq_eq
+    have h_conn := wr2ShearContractedFiber_mem_explicit_connections hr_pinch hq_shear
+    have hr_odd : r % 2 = 1 := h_conn.2.1
+    have hq_odd : q % 2 = 1 := h_conn.2.2.2.2.2.1
     have h_props := wr2ShearContractedFiber_to_hyperbolic_and_sum hq_shear
     have hq_hyp := h_props.1
     rw [hyperbolicPrimeFiber, mem_filter] at hq_hyp
-    obtain ⟨_, hq_isp, hq_odd, h_r2_le_q, _⟩ := hq_hyp
-    have hr_copy := hr_pinch
-    rw [wr2PinchedOddPrimes, mem_filter, oddPrimesBelow, mem_filter] at hr_copy
-    have hr_odd : r % 2 = 1 := hr_copy.1.2.2
+    have h_r2_le_q : r + 2 ≤ q := hq_hyp.2.2.2.1
     have h_r_le_q : r ≤ q := by omega
     have h_hc_sq := odd_pair_half_chord_sq_eq h_r_le_q hr_odd hq_odd
     have h_rec_eq :
-        reconstructPrimeFromHalfChordWR2 N (factorPairToHalfChord (r, q)) = N - r * q := by
-      unfold reconstructPrimeFromHalfChordWR2 factorPairToHalfChord
+        reconstructPrimeWR2 N (factorPairToHalfChord (r, q)) = N - r * q := by
+      unfold reconstructPrimeWR2 factorPairToHalfChord
       dsimp only
+      rw [h_hc_sq]
       omega
     have h_N_sub_rq_eq_p : N - r * q = p := by
       rw [← h_rec_eq, h_pair_eq, h_p_eq]
